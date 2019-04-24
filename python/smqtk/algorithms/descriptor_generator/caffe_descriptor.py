@@ -196,7 +196,7 @@ class CaffeDescriptorGenerator (DescriptorGenerator):
         image_mean_elem = from_uri(self.image_mean_uri)
         image_mean_bytes = image_mean_elem.get_bytes()
         try:
-            a = numpy.load(io.BytesIO(image_mean_bytes))
+            a = numpy.load(io.BytesIO(image_mean_bytes), allow_pickle=True)
             self._log.info("Loaded image mean from numpy bytes")
         except IOError:
             self._log.debug("Image mean file not a numpy array, assuming "
