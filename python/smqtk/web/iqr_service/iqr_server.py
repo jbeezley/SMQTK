@@ -380,13 +380,14 @@ class IqrService (SmqtkWebApp):
         if img_b64 is None:
             return make_response_json("No image provided"), 400
         try:
-            T_img_string = base64.urlsafe_b64decode(img_b64)
+            T_img_string = base64.b64decode(img_b64)
             #T_img_array = np.fromstring(T_img_string, dtype=np.uint8) #beware of float64 vs uint8
             img_container = io.BytesIO(T_img_string)
             T_img_PIL = Image.open(img_container)
             
             #T_img_PIL = Image.open(img)
-        except:
+        except Exception:
+            flask.current_app.logger.exception('could not open')
             return make_response_json("Image could not be opened."), 400
         """
 
@@ -428,15 +429,7 @@ class IqrService (SmqtkWebApp):
         S_img_container = io.BytesIO()
         S_img.save(S_img_container, format='PNG')
         S_img_container.seek(0)
-        pid = "sa_map"
-        import ipdb
-        ipdb.set_trace()
-        return flask.send_file(
-                    S_img_container,
-                    mimetype='image/png',
-                    as_attachment=True,
-                    attachment_filename='%s.png' % pid), 200
-        
+        return flask.Response(S_img_container.getvalue(), mimetype='image/png')
 
     def describe_base64_data(self, b64, content_type):
         """
