@@ -50,7 +50,8 @@ def generate_block_masks_from_gridsize(image_size, grid_size=(5,5)):
             masks[i, r:r + window_size[0], c:c + window_size[1]] = 0
             i += 1
 
-    masks = masks.reshape(-1, *image_size, 1)
+    shp = [-1] + list(*image_size) + [1]
+    masks = masks.reshape(*shp)
 
     return masks
 
@@ -135,7 +136,8 @@ def generate_block_masks(window_size, stride, image_size):
             masks[i, r:r + window_size, c:c + window_size] = 0
             i += 1
 
-    masks = masks.reshape(-1, *image_size, 1)
+    shp = [-1] + list(*image_size) + [1]
+    masks = masks.reshape(*shp)
     
     return masks
 

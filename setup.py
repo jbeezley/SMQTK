@@ -139,6 +139,7 @@ setuptools.setup(
         'scikit-learn',
         'scipy',
         'six',
+        'tqdm'
     ],
     extras_require={
         # Various optional dependencies for plugins

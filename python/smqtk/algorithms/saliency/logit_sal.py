@@ -187,9 +187,9 @@ class Logit_ImageSaliencyAugmenter(ImageSaliencyAugmenter):
                 masks[i, r1:r2, c1:c2] = 0
                 i += 1
 
-        masks = masks.reshape(-1, *image_size, 1)
+        shp = [-1] + list(image_size) + [1]
+        masks = masks.reshape(*shp)
         return masks
-
 
     def generate_masked_imgs(self, masks, img):
         """
