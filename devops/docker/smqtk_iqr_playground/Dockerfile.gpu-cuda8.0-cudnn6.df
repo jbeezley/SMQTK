@@ -48,6 +48,7 @@ RUN mkdir /smqtk/build \
  && cd / \
  && rm -rf smqtk
 
+RUN pip install torch==1.0.0 torchvision==0.2.2
 
 # Add ``smqtk`` user and add sudo privilege
 RUN useradd -mr -s /bin/bash smqtk \

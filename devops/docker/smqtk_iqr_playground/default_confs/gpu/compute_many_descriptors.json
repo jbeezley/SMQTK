@@ -15,21 +15,15 @@
         "type": "PostgresDescriptorElement"
     },
     "descriptor_generator": {
-        "CaffeDescriptorGenerator": {
-            "batch_size": 20,
-            "data_layer": "data",
-            "gpu_device_id": 0,
-            "image_mean_uri": "/home/smqtk/caffe/msra_resnet/ResNet_mean.binaryproto",
-            "input_scale": null,
-            "load_truncated_images": true,
-            "network_is_bgr": true,
-            "network_model_uri": "/home/smqtk/caffe/msra_resnet/ResNet-50-model.caffemodel",
-            "network_prototxt_uri": "/home/smqtk/caffe/msra_resnet/ResNet-50-deploy.prototxt",
-            "pixel_rescale": null,
-            "return_layer": "pool5",
+        "PytorchDescriptorGenerator": {
+            "batch_size": 30,
+            "model_cls_name": "ImageNet_ResNet50",
+            "model_uri": null,
+            "resize_val": [224,224],
+            "in_gpu_device_id": 1,
             "use_gpu": true
         },
-        "type": "CaffeDescriptorGenerator"
+        "type": "PytorchDescriptorGenerator"
     },
     "descriptor_index": {
         "PostgresDescriptorIndex": {
