@@ -54,7 +54,7 @@
                     "model_cls_name": "ImageNet_ResNet50",
                     "model_uri": null,
                     "resize_val": [224,224],
-                    "in_gpu_device_id": 1,
+                    "in_gpu_device_id": 0,
                     "use_gpu": true
                 },
                 "type": "PytorchDescriptorGenerator"
@@ -101,7 +101,7 @@
                         "type": "MemoryDescriptorIndex"
                     },
                     "factory_string": "IVF1,Flat",
-                    "gpu_id": 1,
+                    "gpu_id": 0,
                     "idx2uid_kvs": {
                         "MemoryKeyValueStore": {
                             "cache_element": {
