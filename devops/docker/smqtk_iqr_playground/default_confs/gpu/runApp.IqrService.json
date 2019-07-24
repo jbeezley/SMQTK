@@ -21,7 +21,7 @@
             },
             "classifier_config": {
                 "LibSvmClassifier": {
-                    "normalize": 2,
+                    "normalize": null,
                     "svm_label_map_uri": null,
                     "svm_model_uri": null,
                     "train_params": {
@@ -50,12 +50,12 @@
             },
             "descriptor_generator": {
                 "CaffeDescriptorGenerator": {
-                    "batch_size": 10,
+                    "batch_size": 40,
                     "data_layer": "data",
                     "gpu_device_id": 0,
                     "image_mean_uri": "/home/smqtk/caffe/msra_resnet/ResNet_mean.binaryproto",
                     "input_scale": null,
-                    "load_truncated_images": true,
+                    "load_truncated_images": false,
                     "network_is_bgr": true,
                     "network_model_uri": "/home/smqtk/caffe/msra_resnet/ResNet-50-model.caffemodel",
                     "network_prototxt_uri": "/home/smqtk/caffe/msra_resnet/ResNet-50-deploy.prototxt",
@@ -83,6 +83,110 @@
                 "type": "PostgresDescriptorIndex"
             },
             "neighbor_index": {
+                "FaissNearestNeighborsIndex": {
+                    "descriptor_set": {
+                        "MemoryDescriptorIndex": {
+                            "cache_element": {
+                                "DataFileElement": {
+                                    "explicit_mimetype": null,
+                                    "filepath": "models/fni_mdi_dfe_filepath",
+                                    "readonly": false
+                                },
+                                "DataMemoryElement": {
+                                    "bytes": null,
+                                    "content_type": null,
+                                    "readonly": false
+                                },
+                                "DataUrlElement": {
+                                    "url_address": null
+                                },
+                                "type": "DataFileElement"
+                            },
+                            "pickle_protocol": -1
+                        },
+                        "type": "MemoryDescriptorIndex"
+                    },
+                    "factory_string": "IVF1,Flat",
+                    "gpu_id": 0,
+                    "idx2uid_kvs": {
+                        "MemoryKeyValueStore": {
+                            "cache_element": {
+                                "DataFileElement": {
+                                    "explicit_mimetype": null,
+                                    "filepath": "models/fni_mkvs_dfe_filepath",
+                                    "readonly": false
+                                },
+                                "DataMemoryElement": {
+                                    "bytes": null,
+                                    "content_type": null,
+                                    "readonly": false
+                                },
+                                "DataUrlElement": {
+                                    "url_address": null
+                                },
+                                "type": "DataFileElement"
+                            }
+                        },
+                        "type": "MemoryKeyValueStore"
+                    },
+                    "index_element": {
+                        "DataFileElement": {
+                            "explicit_mimetype": null,
+                            "filepath": "models/fni_ie_dfe_filepath",
+                            "readonly": false
+                        },
+                        "DataMemoryElement": {
+                            "bytes": null,
+                            "content_type": null,
+                            "readonly": false
+                        },
+                        "DataUrlElement": {
+                            "url_address": null
+                        },
+                        "type": "DataFileElement"
+                    },
+                    "index_param_element": {
+                        "DataFileElement": {
+                            "explicit_mimetype": null,
+                            "filepath": "models/fni_ipe_dfe_filepath",
+                            "readonly": false
+                        },
+                        "DataMemoryElement": {
+                            "bytes": null,
+                            "content_type": null,
+                            "readonly": false
+                        },
+                        "DataUrlElement": {
+                            "url_address": null
+                        },
+                        "type": "DataFileElement"
+                    },
+                    "random_seed": null,
+                    "read_only": false,
+                    "uid2idx_kvs": {
+                        "MemoryKeyValueStore": {
+                            "cache_element": {
+                                "DataFileElement": {
+                                    "explicit_mimetype": null,
+                                    "filepath": "models/fni_mkvs2_dfe_filepath",
+                                    "readonly": false
+                                },
+                                "DataMemoryElement": {
+                                    "bytes": null,
+                                    "content_type": null,
+                                    "readonly": false
+                                },
+                                "DataUrlElement": {
+                                    "url_address": null
+                                },
+                                "type": "DataFileElement"
+                            }
+                        },
+                        "type": "MemoryKeyValueStore"
+                    },
+                    "use_gpu": true,
+                    "use_multiprocessing": true
+                },
                 "LSHNearestNeighborIndex": {
                     "descriptor_index": {
                         "PostgresDescriptorIndex": {
